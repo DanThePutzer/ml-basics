@@ -1,0 +1,31 @@
+- - - - How To Calculate Accuracy For LR - - - -
+
+The error is distance from point to regression line
+  -> Error can be positive or negative
+All errors will be squared so we only have to deal with positive values
+Squaring errors also penalizes outliers by increasing their error value even further
+
+Coefficient of Determination:
+- Basically comparing mean(y) line (which is a straight line) to the Regression Line
+
+              SE * y_hat
+  r**2 = 1 - -------------
+              SE * mean(y)
+
+- SE: Sum of all Squared Errors
+- y_hat: y-coordinates of Regression (aka Best Fit) Line
+- mean(y): Mean of y-coordinates of training dataset
+
+Interpreting r**2 Value:
+- The higher r**2 the better the regression line fit and/or the more linear the data
+  EXP:
+      r**2 = 0.8 --> SE*y_hat = 2     --> Big difference between y_hat error and mean(y) error
+                     SE*mean(y) = 10
+                    
+
+- The lower r**2 the worse the regression line fit and/or the less linear the data
+  EXP:
+      r**2 = 0.3 --> SE*y_hat = 7     --> Little difference between y_hat error and mean(y) error
+                     SE*mean(y) = 10
+
+

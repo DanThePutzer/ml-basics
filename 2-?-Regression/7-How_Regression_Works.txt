@@ -1,0 +1,17 @@
+- - - - Linear Regression Basics - - - - 
+
+Tries to find line that best approximates the data
+Works fairly well or not depending on how linear the relationship between the data points is
+
+y = mx + b
+
+m: Slope of line
+
+       (mean(x) * mean(y) - mean(x * y))
+  m =  ---------------------------------
+          mean(x)^2 - mean(x^2)
+
+
+b: Intercept on y-axis
+
+  b = mean(y) - m * mean(x)
