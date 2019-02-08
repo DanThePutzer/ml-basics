@@ -3,11 +3,11 @@
 A dive into machine learning and python following sentdex's YouTube tutorial series.
 The series teaches how to work with widespread packages and libraries like SciKit-Learn and Tensorflow as well building popular machine learning algorithms from scratch.
 
-# Programming Languages:
+### Programming Languages: ###
 Python
 
-# Current Progress:
+### Current Progress: ###
 Video 12 - Testing Linear Regression Assumptions
 
-# Links To Resources
+### Links To Resources: ###
 https://www.youtube.com/playlist?list=PLQVvvaa0QuDfKTOs3Keq_kaG2P55YRn5v

@@ -28,4 +28,3 @@ Interpreting r**2 Value:
       r**2 = 0.3 --> SE*y_hat = 7     --> Little difference between y_hat error and mean(y) error
                      SE*mean(y) = 10
 
-
