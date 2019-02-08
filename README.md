@@ -23,5 +23,4 @@ Video 12 - Testing Linear Regression Assumptions
 
 ### Links To Resources: ###
 
-**Machine Learning With Python Tutorial Series** - by sentdex
-https://www.youtube.com/playlist?list=PLQVvvaa0QuDfKTOs3Keq_kaG2P55YRn5v
+Machine Learning With Python Tutorial Series - [View](https://www.youtube.com/playlist?list=PLQVvvaa0QuDfKTOs3Keq_kaG2P55YRn5v)
