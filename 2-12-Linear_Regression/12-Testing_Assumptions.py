@@ -1,9 +1,12 @@
 
-# - - - - Code copied from 8-9-Best_Fit_Line.py - - - -
+# - - - - Some code copied from: - - - -
+# - 8-9-Best_Fit_Line.py
+# - 11-R_Squared_Practical.py
 
 from statistics import mean
 import numpy as np
 import matplotlib.pyplot as plt
+import random
 
 # - - - Variable Index - - - 
 
@@ -23,6 +26,34 @@ xData = np.array([1, 2, 3, 4, 5, 6], dtype=np.float64)
 yData = np.array([5, 4, 6, 5, 6, 7], dtype=np.float64)
 
 xToPredict = np.array([10,12,7], dtype=np.float64)
+
+# - - - - - NEW STUFF FROM TUTORIAL 12 - - - - -
+
+# amount: how many datapoints
+# variance: how variable dataset should be (volatility as a stock market analogy)
+# step: how far on average to step up y value per datapoint (2 is default)
+# correlation: can be False, 'pos' or 'neg' (False is default)
+
+def createDataset(amount, variance, step=2, correlation=False):
+  val = 1
+  ySet = []
+
+  # Generate random data for y-coordinates with variance boundaries
+  for i in range(amount):
+    y = val + random.randrange(-variance, variance)
+    ySet.append(y)
+
+    # Correlation settings
+    if correlation and correlation == 'pos':
+      val += step
+    elif correlation and correlation == 'neg':
+      val -= step
+
+  # Generate x-coordinates, i++ for each datapoint in xSet
+  xSet = [i for i in range(len(ySet))]
+
+  return np.array(xSet, dtype=np.float64), np.array(ySet, dtype=np.float64)
+
 
 # - Formulas used from 7-How_Regression_Works.txt -
 
@@ -44,6 +75,8 @@ def bestFitLine(x, y):
 
 # - - - - - NEW STUFF FROM TUTORIAL 11 - - - - -
 
+# - Formulas used from 10-R_Squared_Theory.txt -
+
 def coefficientOfDetermination(yOriginal, yBestFit):
   # Calculating y-coordinates for line of mean of all datapoints
   yOriginalMean = [mean(yOriginal) for y in yOriginal]
@@ -56,6 +89,11 @@ def coefficientOfDetermination(yOriginal, yBestFit):
   # Caluclating coefficient of determination based on above calculations
   r = 1 - (squaredErrorBestFit / squaredErrorOriginal)
   return r, yOriginalMean
+
+
+# Creating new dataset using dedicated function from Tutorial 12
+# Repopulating xData and yData width nely generated datapoints
+xData, yData = createDataset(40, 5, 2, correlation='neg')
 
 
 # Defining slope m and intercept b
