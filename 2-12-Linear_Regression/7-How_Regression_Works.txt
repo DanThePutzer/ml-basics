@@ -1,4 +1,5 @@
-- - - - Linear Regression Basics - - - - 
+- - - - Linear Regression Basics - - - -
+(Instance Based Learning)
 
 Tries to find line that best approximates the data
 Works fairly well or not depending on how linear the relationship between the data points is

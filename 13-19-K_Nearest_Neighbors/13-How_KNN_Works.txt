@@ -1,0 +1,17 @@
+- - - - K Nearest Neighbors Basics - - - - 
+(Instance Based Learning)
+
+Used to classify data (Exp. clustering)
+Looks for k other closest datapoints and how they were classified
+  -> Will assign class based on class of majority of closest datapoints
+
+K should be a non-even number otherwise split votes might happen
+
+- Confidence: How sure the model is about its classification
+    Exp: --+ = 66% confident it is a -
+- Accuracy: How well the model classifies in general
+
+For Linear Regression Confidence and Accuracy are pretty much the same
+
+Major downfall: Have to calculate Euclidian distance for all datapoints to find closest k
+  -> Becomes less and less efficient the bigger the dataset
