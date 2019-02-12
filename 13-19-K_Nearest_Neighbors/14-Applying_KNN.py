@@ -28,5 +28,19 @@ clf = neighbors.KNeighborsClassifier()
 clf.fit(X_train, y_train)
 
 # Testing classifier
+# Try training and testing WITHOUT dropping 'id' column to see how devastating irrelevant features can be
 accuracy = clf.score(X_test, y_test)
+print(f"\nTest Accuracy: {accuracy}")
 
+# Predicting Stuff
+X_predict = np.array([4,2,1,1,1,2,3,2,1]).reshape(1, -1)
+prediction = clf.predict(X_predict)
+print(f"Prediction: {prediction}\n")
+
+# - - - - NumPy .reshape(row, col): - - - -
+#   row = some integer -> Reshaped array will have specified number of rows
+#   column = some integer -> Reshaped array will have specified number of columns
+#   row or col = -1 -> NumPy figures out remaining dimensions of array
+#     -> Cannot have row and col be -1, one of the two has to be specified
+
+# 1D array has to be reshaped to (1, -1) = 1 row and number of cols determined by NumPy

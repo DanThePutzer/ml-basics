@@ -19,7 +19,7 @@ Python
 - - - -
 
 ### Current Progress: ###
-Video 14 - Classification With K Nearest Neighbors Intro
+Video 16 - KNN From Scratch
 
 - - - -
 
