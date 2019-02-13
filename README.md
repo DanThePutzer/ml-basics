@@ -19,7 +19,7 @@ Python
 - - - -
 
 ### Current Progress: ###
-Video 16 - KNN From Scratch
+Video 20 - SVM Intro
 
 - - - -
 
