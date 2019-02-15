@@ -11,10 +11,10 @@ Python
 - - - -
 
 ### Index: ###
-**• 2-12-Linear_Regression** - Linear Regression implemented with SciKit-Learn and from scratch to better understand its inner
+* **2-12-Linear_Regression** - Linear Regression implemented with SciKit-Learn and from scratch to better understand its inner
                         workings, Videos 2 to 12 from playlist below.
 
-**• 13-19-K_Nearest_Neighbors** - K Nearest Neighbors theory and implementation.
+* **13-19-K_Nearest_Neighbors** - K Nearest Neighbors theory and implementation.
 
 - - - -
 
