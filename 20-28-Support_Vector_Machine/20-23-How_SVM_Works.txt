@@ -1,0 +1,49 @@
+- - - - Support Vector Machine Basics - - - -
+
+Binary Classifier: Can only separate one group from the rest at a time
+  -> Two groups usually denoted as 'positive' and 'negative' group
+
+SVM tries to find best hyperplane to separate postive group from the rest
+  -> In 2D this would be a line
+Best hyperplane would be the one with the biggest distance from closest points of each group -> Called Decision Boundary
+
+
+- - Vectors - -
+
+Vectors have magnitude and direction
+Exp:  A = (3,4)
+      B = (4,2)
+
+Magnitude: ||A|| = sqrt(3**2 + 4**2) = 5
+
+Dot Product: A•B = 3*4 + 4*2 = 20
+
+
+- - Support Vector Assertion - -
+
+Needed:
+ - Vector 'w' perpendicular to decision boundary
+ - Vector 'u', which represents data point to classify
+ - Bias 'b', which shifts the decision boundary around, giving it the possibility to move away from the origin
+
+Classifying:
+  If u•w + b < 0:
+    Negative sample -> left of decision boundary line in 2D
+  If u•w + b > 0:
+    Positive sample -> right of decision boundary line in 2D
+
+So hypothesis to optimize for SVM is:
+  u • w + b
+
+  w and b are the parameters to optimize
+
+Equations for positive and negative support vectors
+x_+SV • w + b = +1
+x_-SV • w + b = -1
+
+y_i -> Class of features passed through SVM
+  If y_i = + -> +1
+  If y_i = - -> -1
+
+
+NEED TO LOOK INTO THIS MORE
