@@ -14,12 +14,14 @@ Python
 * **2-12-Linear_Regression** - Linear Regression implemented with SciKit-Learn and from scratch to better understand its inner
                         workings, Videos 2 to 12 from playlist below.
 
-* **13-19-K_Nearest_Neighbors** - K Nearest Neighbors theory and implementation.
+* **13-19-K_Nearest_Neighbors** - K Nearest Neighbors intuition and implementation from scratch and with SciKit-Learn.
+
+* **20-28-Support Vector Machine** - Support Vector Machine intuition and scratch implementation.
 
 - - - -
 
 ### Current Progress: ###
-Video 20 - SVM Intro
+Video 25 - Implementing SVM from scratch
 
 - - - -
 

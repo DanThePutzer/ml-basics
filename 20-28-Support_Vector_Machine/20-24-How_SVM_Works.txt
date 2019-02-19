@@ -1,0 +1,70 @@
+- - - - Support Vector Machine Basics - - - -
+
+Binary Classifier: Can only separate one group from the rest at a time
+  -> Two groups usually denoted as 'positive' and 'negative' group
+
+SVM tries to find best hyperplane to separate postive group from the rest
+  -> In 2D this would be a line
+Best hyperplane would be the one with the biggest distance from closest points of each group -> Called Decision Boundary
+
+
+- - Math - -
+
+Needed:
+ - Vector 'w' perpendicular to decision boundary
+ - Vector 'x', which represents data point to classify
+ - Bias 'b', which shifts the decision boundary around, giving it the possibility to move away from the origin
+
+
+Equation for a Hyperplane:
+  w • x + b
+
+Equation for positive support vector:
+  w • x + b = 1
+
+Equation for negative support vector:
+  w • x + b = -1
+
+Equation for decision boundary:
+  w • x + b = 0
+
+In training, classifier tries to maximize margins and draws decision boundary with support vectors as far appart as possible.
+When classifier is used on new data, support vectors don't really matter anymore. Data gets classified using only decision boundary.
+
+  - Equation for positively classified datapoint:
+    w • x + b >= 0
+
+  - Equation for negatively classified datapoint:
+    w • x + b < -1
+
+Goal -> Minimize w:
+
+  Euclidian distance between a point and a line is the absolute value of the equation of the line divided by the magnitude of the line's normal vector
+    -> A normal vector to a line is a vector perpendicular to the line at any given point
+
+  Exp:
+        |w • x + b|
+    d = -----------
+            ||w||
+
+  Therefore, minimizing w (and with it ||w||) maximizes the margins
+
+  Simplified:
+
+    d = 1/||w||
+    w = 2/||w||
+
+  This is a quadratic programming problem:
+    Minimize 2 / ||w||                                 (Zu Optimieren)
+    Subject to constraint y * (x • w + b) >= 1         (Nebenbedingung)
+
+  TL;DR:
+  Need to optimize and find lowest value for w that satisfies following function:
+    label * (features • w + b) >= 1
+
+
+Problem:
+When calculating magnitude of w -> sign is lost
+w = [2,3], [2,-3], [-2,3], [-2,-3] all yield same result when calculating ||w||, but dot product of w and x is different for each one.
+
+    
