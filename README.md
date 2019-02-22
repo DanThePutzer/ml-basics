@@ -27,4 +27,6 @@ Video 25 - Implementing SVM from scratch
 
 ### Links To Resources: ###
 
-Machine Learning With Python Tutorial Series - [View](https://www.youtube.com/playlist?list=PLQVvvaa0QuDfKTOs3Keq_kaG2P55YRn5v)
+* Machine Learning With Python Tutorial Series - [View](https://www.youtube.com/playlist?list=PLQVvvaa0QuDfKTOs3Keq_kaG2P55YRn5v)
+
+* Additional tutorial on the math behind Support Vector Machines - [View](https://www.youtube.com/watch?v=_PwhiWxHK8o)
