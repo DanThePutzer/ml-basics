@@ -55,8 +55,8 @@ Goal -> Minimize w:
     w = 2/||w||
 
   This is a quadratic programming problem:
-    Minimize 2 / ||w||                                 (Zu Optimieren)
-    Subject to constraint y * (x • w + b) >= 1         (Nebenbedingung)
+    Minimize 2 / ||w||   or   1/2 * ||w||**2   for math. convenience.       (Zu optimieren)
+    Subject to constraint y * (x • w + b) >= 1                              (Nebenbedingung)
 
   TL;DR:
   Need to optimize and find lowest value for w that satisfies following function:

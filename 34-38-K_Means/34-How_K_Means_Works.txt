@@ -1,0 +1,19 @@
+- - - - K Means Basics - - - -
+
+First dive into unsupervised learning
+K Means is a clustering algorithm
+  - Algorithm will try to separate data into to K clusters
+
+K = 2 -> Flat Clustering
+How it works:
+  - Randomly choose K datapoints -> centeroids
+  - Calculate euclidian distance between remaining datapoints and centeroids
+    -> Each datapoint will get class of centeroid closest to it -> Forming of clusters
+  - Once all datapoints are classified -> Calculate mean for each cluster
+  - Mean of each cluster becomes new centeroid -> All datapoints get reclassified according to new centeroids
+  - Repeat until centeroids don't move anymore
+
+Often has tolerance parameter to allow for some error and a maximum iterations parameter so it doesn't take forever
+
+Since K Means adheres to distance it doesn't work well when one is looking for clusters of different sizes
+

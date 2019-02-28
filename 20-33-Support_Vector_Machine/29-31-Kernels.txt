@@ -1,0 +1,60 @@
+- - - - Kernel Basics - - - -
+
+Kernel is basically a similarity function.
+  -> Takes inputs and outputs their similarity
+Allows to do calculations in higher dimensions without actually visiting thos dimensions/needing the processing power that comes with dimensionality expansion.
+
+y = sign(w • x + b)
+  - We are operating in x-space
+  - Since dor product (aka inner product) always returns a scalar, the x-space can be replaced with an n-dimensional z-space
+    -> More dimensions might make not linearly separable data linearly separable
+
+As seen in Patrick Winston's lecture optimization for the SVM really only depends on dot products
+  -> x-space can, therefore, always be replaced by an n-dimensional space z
+
+Mathematical definition of a Kernel:
+  K(x,x') = z • z'
+  z = Some function of (x)
+  z' = Some function of (x')
+    -> Function applied to x and x' has to be the same one
+
+Kernel can be represented with the greek letter phi (ϕ)
+  -> In other sources it might be used like follows: y = w • ϕx + b
+
+Example for 2D vector space:
+  Featureset X = [x1, x2] -> Turn into 2nd order polynomial -> From 2 dimensions to 6 dimensions
+  New Featureset Z = [1, x1, x2, x1**2, x2**2, x1*x2]
+                 Z' = [1, x1', x2', x1'**2, x2'**2, x1'*x2']
+  K(x,x') = Z • Z' = really long expression and expensive to compute
+  Use Kernel for better efficiency
+
+Polynomial Kernel:
+  -> General Definition: K(x,x') = (1 + x • x')**p
+                                 = (1 + x1 • x1' + ... + xn • xn')**p
+
+Radial Basis Function (RBF) Kernel
+  -> General Definition: K(x,x') = exp(-gamma * ||x - x'||**2)
+  -> Default kernel used by many (SciKit-Learn uses it as default)
+
+
+Red Flag when using Kernels:
+If almost all datapoints are support vectors -> Major overfitting
+  - Number of support vectors should be as far from the number of total datapoints as possible
+  - Exp: For dataset with 100 points # SVs / # Datapoints should be < 10%
+
+
+- - Soft Margin SVM - -
+
+Soft margin SVM allows some degree of error
+  -> Error is distance of point to decision boundary
+Allowed error is controlled with 'slack' parameter s
+  -> y * (x • w + b) >= 1 - s
+  -> s has to be a positive number
+
+We want to minimize the global amount of slack, we add another term to help with that
+  Min 1/2 * ||w||**2 + C * sum(s)
+
+If C high -> Greater punishment for error -> less violations of margin
+  -> Lower slack
+If C low -> Smaller punishment for error -> more violations of margin
+  -> Higher slack

@@ -1,0 +1,9 @@
+- - - - SVM with not linearly separable data - - - -
+
+SVM can only separate 2 groups of data at a time
+There's 2 major ways to handle datasets with more than 2 groups:
+  • OVR: One Vs. Rest
+    -> For each group tries to separate from the rest and draws a new hyperplane for each
+    -> Is default method
+  • OVO: One Vs. One
+    -> Tries to separate selected group from each other group individually (1 from 2, 1 from 3, 2 from 1, 2 from 3, etc.)

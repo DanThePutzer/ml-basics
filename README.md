@@ -14,14 +14,16 @@ Python
 * **2-12-Linear_Regression** - Linear Regression implemented with SciKit-Learn and from scratch to better understand its inner
                         workings, Videos 2 to 12 from playlist below.
 
-* **13-19-K_Nearest_Neighbors** - K Nearest Neighbors intuition and implementation from scratch and with SciKit-Learn.
+* **13-19-K_Nearest_Neighbors** - K Nearest Neighbors intuition and implementation from scratch and with SciKit-Learn, Videos 13 to 19 from playlist below.
 
-* **20-28-Support Vector Machine** - Support Vector Machine intuition and scratch implementation.
+* **20-33-Support_Vector_Machine** - Support Vector Machine intuition and scratch implementation, Videos 20 to 33 from playlist below.
+
+* **34-38-K_Means** - The first unsupervised algorithm in the series implemented with popular libraries as well as from scratch, Videos 34 to 38 from playlist below.
 
 - - - -
 
 ### Current Progress: ###
-Video 25 - Implementing SVM from scratch
+Video 34 - Clustering Introduction
 
 - - - -
 
