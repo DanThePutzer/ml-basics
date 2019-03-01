@@ -16,4 +16,3 @@ How it works:
 Often has tolerance parameter to allow for some error and a maximum iterations parameter so it doesn't take forever
 
 Since K Means adheres to distance it doesn't work well when one is looking for clusters of different sizes
-

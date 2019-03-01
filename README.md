@@ -23,7 +23,7 @@ Python
 - - - -
 
 ### Current Progress: ###
-Video 34 - Clustering Introduction
+Video 38 - K Means from scratch
 
 - - - -
 
