@@ -1,0 +1,16 @@
+- - - - Mean Shift Basics - - - -
+
+Hierarchical clustering -> Algrithm figures out how many clusters exist
+
+Initially every single point is a cluster center
+Each cluster center has a radius and a bandwidth
+• Bandwith: Circle around the cluster center
+• Radius: Distance from cluster center to bandwidth
+
+Radius determines Bandwith
+For every cluster center (aka. datapoint):
+  - Find other points within bandwith
+  - Calculate mean of points within bandwidth -> new cluster center
+  - Continue until cluster center doesn't move anymore
+
+  -> When cluster centers of neighboring points reach same position -> Convergence

@@ -1,7 +1,6 @@
 from matplotlib import pyplot as plt
 import numpy as np
 import pandas as pd
-from sklearn.cluster import KMeans
 
 # Creating simple dataset
 X = np.array([
@@ -29,7 +28,6 @@ class K_Means:
     self.k = k
     self.tol = tol
     self.maxIter = maxIter
-    self.centeroidHistory = []
 
   # Training function
   def fit(self, data):
@@ -42,8 +40,6 @@ class K_Means:
     # Choosing k centeroids from shuffled data
     for i in range(self.k):
       self.centeroids[i] = data[i]
-
-    self.centeroidHistory.append([self.centeroids[0], self.centeroids[1]])
 
     for i in range(self.maxIter):
       # Has k lists, one for each of the k clusters
@@ -72,7 +68,6 @@ class K_Means:
         # to the average of points ( self.clusters[cluster] ) belonging to the cluster
       for cluster in self.clusters:
         self.centeroids[cluster] = np.average(self.clusters[cluster], axis=0)
-        self.centeroidHistory.append([self.centeroids[0], self.centeroids[1]])
 
       optimized = True
 
@@ -100,14 +95,14 @@ class K_Means:
     return classification
 
 
-
 # Defining some colors for graph
-colors = ["g", "c", "r", "b"]
+colors = ["c", "r", "g", "b"]
 
 
 clf = K_Means()
 clf.fit(X)
 
+# Plotting centeroids and datapoints
 for centeroid in clf.centeroids:
   plt.scatter(clf.centeroids[centeroid][0], clf.centeroids[centeroid][1], marker='*', s=70, c='k')
 
@@ -115,5 +110,20 @@ for cluster in clf.clusters:
   color = colors[cluster]
   for datapoint in clf.clusters[cluster]:
     plt.scatter(datapoint[0], datapoint[1], marker='o', s=30, c=color)
+
+# Data to predict
+predictData = np.array([
+  [1,3],
+  [8,9],
+  [0,3],
+  [5,4],
+  [6,4]
+])
+
+# Predicting stuff
+for point in predictData:
+  classification = clf.predict(point)
+  plt.scatter(point[0], point[1], marker='*', color=colors[classification])
+
 
 plt.show()
