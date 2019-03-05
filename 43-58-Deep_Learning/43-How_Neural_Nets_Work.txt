@@ -1,0 +1,23 @@
+- - - - Neural Networks Basics - - - -
+
+In it's simplest form:
+  - Neuron takes inputs
+  - Each input has a weight
+  - Input values * repective weights for each neuron get summed up
+  - Sum of weighted inputs is passed through a threshold function (aka. activation function) to determine if neuron fires or not
+    -> Function can be:
+      • Step function: Gives either 0 or 1 (Threshold function)
+      • Sigmoid function: Gives continuous values between 0 and 1 (Activation function)
+  - If neuron fires, output of current neuron gets passed to neuron in next layer as input
+
+Neural network consists of layers of neurons
+-> All of a layer's neurons a connected to all of the previous/next layer's neurons
+-> Each connection between 2 neurons has a unique weight value
+
+Layers between input and output layers are called hidden layers
+• 1 hidden layer: Regular neural network
+• 2 or more hidden layers: Deep neural network
+
+Unlike for example SVM, Neural nets aren't a convex optimization problem
+
+Neural nets tend to need a ton of data to give meaningful results (more than other algorithms)

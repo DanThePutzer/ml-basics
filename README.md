@@ -21,11 +21,13 @@ Python
 
 * **39-42-Mean_Shift** - A dive into the Mean Shift algorithm with packages and implementation from scratch, Videos 39 to 42 from playlist below.
 
+* **43-58-Deep_Learning** - Implementing Deep Learning models with Tensorflow, Videos 43 to 58 from playlist below.
+
 
 - - - -
 
 ### Current Progress: ###
-Video 43 - Intro to Deep learning
+Video 48 - Processing Own Data
 
 - - - -
 
