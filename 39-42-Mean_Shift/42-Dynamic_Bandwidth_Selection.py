@@ -7,18 +7,28 @@ from sklearn.datasets.samples_generator import make_blobs
 # Improving it with dynamic bandwith selection
 
 # Generating simple dataset
-centers = [[5,2], [9,12], [1,9]]
+# centers = [[5,2], [9,12], [1,9]]
 
-X, _ = make_blobs(n_samples=100, centers=centers, cluster_std=1.5)
+X, _ = make_blobs(n_samples=100, centers=6, cluster_std=1)
+# X = np.array([[1, 2],
+#               [1.5, 1.8],
+#               [5, 8 ],
+#               [8, 8],
+#               [1, 0.6],
+#               [9,11],
+#               [8,2],
+#               [10,2],
+#               [9,3],])
 
 # Colors for graphs
-colors = ['y', 'c', 'm', 'g', 'r', 'b', 'k']
+colors = 10*['y', 'c', 'm', 'g', 'r', 'b', 'k']
 
 # Creating Mean Shift class
 class MeanShift:
-  def __init__(self, radius=None, radiusNormStep=100):
+  def __init__(self, radius=None, radiusNormStep=100, radiusTweak=1):
     self.radius = radius
     self.radiusNormStep = radiusNormStep
+    self.radiusTweak = radiusTweak
 
   # Training function
   def fit(self, data):
@@ -30,7 +40,8 @@ class MeanShift:
       # Calculating distance to masterCentroid
       masterNorm = np.linalg.norm(masterCentroid)
       # Calculating new radius
-      self.radius = masterNorm / self.radiusNormStep
+      self.radius = masterNorm / (self.radiusNormStep * self.radiusTweak)
+      print(self.radius)
 
     # Dictionary for centeroids
     centroids = {}
@@ -43,15 +54,15 @@ class MeanShift:
     weights = [i for i in range(self.radiusNormStep)][::-1]
 
     while True:
-      # Collecting centeroids and their assigned points for colored plotting
-      self.clusteredData = {}
 
       newCentroids = []
       for i in centroids:
-        # Array of points within bandwidth of current datapoint
+        # List of points within bandwidth of current datapoint
         inBandwidth = []
-        
+        # List of weights for each featureset in 'inBandwidth'
+        weightList = []
         # Looping over all datapoints and calculating distance and weight
+
         for datapoint in data:
           # Calculating distance between datapoint and clusters centroid
           distance = np.linalg.norm(datapoint-centroids[i])
@@ -62,19 +73,50 @@ class MeanShift:
             # Higher weight index -> lower weight because further away
           weightIndex = int(distance/self.radius)
           # Setting weight index to maximum steps if it goes beyond maximum steps
-          if weightIndex > self.radiusNormStep:
+          if weightIndex > self.radiusNormStep - 1:
             weightIndex = self.radiusNormStep - 1
-        
-        # Adding clusters and their respective points to 'clusteredData'
-        self.clusteredData[i] = inBandwidth
+
+          # Appending current datapoint to 'inBandwidth'
+          inBandwidth.append(datapoint)
+          # Appending current datapoint's step distance from centeroid to 'weightList'
+          weightList.append(weights[weightIndex])
         
         # Calculating new centeroids of clusters by taking average of all points within bandwidth and appending to 'newCenteroids' array
-        newCentroid = np.average(inBandwidth, axis=0)
+        newCentroid = np.average(inBandwidth, axis=0, weights=weightList)
+        # print(newCentroid)
         newCentroids.append(tuple(newCentroid))
+      # print('----')
       
       # Getting new unique centeroids -> eliminates duplicates and takes step towards convergence by unifying clusters with identical centeroids
       # Using set() to get uniques and sorted() to sort them by size
       uniques = sorted(list(set(newCentroids)))
+
+      # Implementing method to eliminate centeroids which aren't identical, but very close to each other (beyond tolerance)
+      # Comparing each centeroid to each other centeroid
+      popPoints = []
+
+      for i in uniques:
+        # Skipping points already marked for popping
+        if i in popPoints:
+          break
+
+        for j in uniques:
+          # If they are the same, no need for action because already handled above with set()
+          if i == j:
+            pass
+          # If distance between two centeroids is smaller than radius and point isn't already in 'popPoints' -> Within one step of each other -> Need to be converged -> Add to list of points to pop
+          elif np.linalg.norm(np.array(i) - np.array(j)) <= self.radius and j not in popPoints:
+            popPoints.append(j)
+      
+
+      # Removing points beyond tolerance
+      for i in popPoints:
+        # print(i)
+        try:
+          uniques.remove(i)
+        except:
+          pass
+
 
       # Saving previous centeroids for next run and replacing previous centeroids with newly determined ones
       prevCenteroids = dict(centroids)
@@ -87,30 +129,46 @@ class MeanShift:
       for i in centroids:
         if not np.array_equal(prevCenteroids[i], centroids[i]):
           optimized = False
-        if not optimized:
-          break
 
       if optimized:
         break
 
     self.centroids = centroids
 
+    # Classifying datapoints
+    self.classifications = {}
+
+    # Creating empty lists for each datapoint for each cluster
+    for i in range(len(self.centroids)):
+      self.classifications[i] = []
+
+    # Classifying datapoints
+    for datapoint in data:
+      # Calculating distance for between datapoint and each centroid
+      distances = [np.linalg.norm(datapoint - self.centroids[centroid]) for centroid in self.centroids]
+      # Class of datapoint is class of centroid closest to it
+      classification = distances.index(min(distances))
+      # Appending classifications to list of closest centroid
+      self.classifications[classification].append(datapoint)
+
   # Predicting function
   def predict(self, data):
-    pass
+    # Calculating distance for between datapoint and each centroid
+    distances = [np.linalg.norm(data - self.centroids[centroid]) for centroid in self.centroids]
+    # Class of datapoint is class of centroid closest to it
+    return distances.index(min(distances))
 
 
 # Defining and training classifier
-clf = MeanShift()
+clf = MeanShift(radiusNormStep=50, radiusTweak=2)
 clf.fit(X)
 
 print(f'\n{len(clf.centroids)} Clusters Detected\n')
 
 # Plotting dataset
-# plt.scatter(X[:,0], X[:,1], s=30)
-for cluster in clf.clusteredData:
-  for point in clf.clusteredData[cluster]:
-    plt.scatter(point[0], point[1], color=colors[cluster])
+for cluster in clf.classifications:
+  for point in clf.classifications[cluster]:
+    plt.scatter(point[0], point[1], color=colors[cluster], marker='o', s=30)
 
 # Plotting centeroids
 for c in clf.centroids:

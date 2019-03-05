@@ -25,7 +25,7 @@ Python
 - - - -
 
 ### Current Progress: ###
-Video 42 - Mean Shift from scratch with Dynamic Bandwidth Selection
+Video 43 - Intro to Deep learning
 
 - - - -
 
