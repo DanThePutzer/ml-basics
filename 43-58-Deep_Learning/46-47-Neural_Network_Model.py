@@ -93,6 +93,7 @@ def modelNet(data):
 def trainNet(x, y, epochs=10):
   # Initializing model and feeding forward data
   prediction = modelNet(x)
+
   # Computing cost
     # tf.reduce_mean: Reduces dimensionality of tensor along axis by taking mean of values
     # Softmax function would usually normalize output values (-> returns values between 0 and 1, could be seen as probablilities)
@@ -123,4 +124,4 @@ def trainNet(x, y, epochs=10):
     print('\nAccuracy:', accuracy.eval({x: mnist.test.images, y: mnist.test.labels}))
 
 
-trainNet(x, y, epochs=40)
+trainNet(x, y, epochs=15)
