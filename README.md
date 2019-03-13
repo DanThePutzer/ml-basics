@@ -27,7 +27,7 @@ Python
 - - - -
 
 ### Current Progress: ###
-Video 48 - Processing Own Data
+Video 58 - TFLearn Basics
 
 - - - -
 

@@ -1,0 +1,32 @@
+- - - - Recurrent Neural Networks Basics - - - -
+
+Neural networks which allow information to persist and influence following steps
+
+Input 1 -> Activation Function 1 -> Output 1
+                    |
+                    |
+Input 2 -> Activation Function 2 -> Output 2
+                    |
+                    |
+Input 3 -> Activation Function 3 -> Output 3
+
+Activation function also takes in activation of previous step
+  -> Network 'remembers' what happened in previous step and takes it into consideration for current step
+
+RNNs need data to be incorrect order -> shuffling data not possible
+
+
+- - - - Long Short Term Memory - - - -
+
+RNNs can forget important data over time
+LSTMs solve that problem, it can decide on what to remember how well by learning what is important alongside the prediction part of the model
+
+LSTM has 4 gates:
+  - Input: Self explanatory
+  - Output: Gets passed on to next layer as well as next step in current layer
+  - Forget: Determines which parts of the information from previous steps should be remembered/forgotten
+Each gate has its own weights
+
+
+
+

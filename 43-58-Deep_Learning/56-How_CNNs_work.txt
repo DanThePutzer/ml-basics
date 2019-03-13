@@ -1,0 +1,28 @@
+- - - - Convolutional Neural Network Basics - - - -
+
+State of the art in image recognition
+
+Structure:
+  Input -> Convolution -> Pooling -> Convolution -> Pooling -> Fully Connected Layer -> Output
+           |-- Hidden Layer 1 --|    |-- Hidden Layer 2 --|
+
+What a Convolution does:
+  - Looks at picture as a matrix of pixels
+  - Slides an nxn (e.g. 3x3) filter over image, each cell in filter has weight just like neuron connections in regular neural network
+  - Filter multiplies value of image pixels with filter weights and then takes dot product of filter matrix to get one single value
+  - Repeat above steps until entire image is covered
+    -> Stride: Determines how many pixels filter gets moved each step
+
+  Result: New image reduced in size
+
+What Pooling does:
+  - Looks at newly generated matrix from Convolution
+  - Uses filter like Convolution and slides over matrix
+  - Depending on Pooling method, takes highest value from each filtering step or calculates average
+  - Generates new matrix of values with results from all the Pooling steps
+
+  Result: Further reduces image in size
+
+  # Look at images in CNN_Visuals folder to better understand the description
+
+
