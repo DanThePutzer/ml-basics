@@ -29,7 +29,7 @@ Python
 - - - -
 
 ### Current Progress: ###
-Video 59 - OpenAI Gym Intro
+Video 61 - Training Model to play CartPole from OpenAI Gym
 
 - - - -
 
