@@ -23,11 +23,13 @@ Python
 
 * **43-58-Deep_Learning** - Implementing Deep Learning models with Tensorflow, Videos 43 to 58 from playlist below.
 
+* **59-62-OpenAI** - Implementing a neural net and teaching it to play the CartPole Game from OpenAI Gym, Videos 59 to 62 from playlist below.
+
 
 - - - -
 
 ### Current Progress: ###
-Video 58 - TFLearn Basics
+Video 59 - OpenAI Gym Intro
 
 - - - -
 
