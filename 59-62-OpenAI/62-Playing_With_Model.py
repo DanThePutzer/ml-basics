@@ -5,22 +5,14 @@ import tflearn
 from tflearn.layers.core import fully_connected, dropout, input_data
 from tflearn.layers.conv import conv_2d, max_pool_2d
 from tflearn.layers.estimator import regression
-from statistics import mean, median
-from collections import Counter
 
-# Defining cart pole environment
+# Initializing things
 env = gym.make('CartPole-v0')
 env.reset()
-
 learningRate = 0.01
 
-# Load training data
-  # data[i][0] -> Observations
-  # data[i][1] -> Action taken
-data = np.load('Data/trainSaved.npy')
-
-
-# Defining model
+# - - - Defining model - - - 
+  # (Structure copied from 61-Training_Model_OpenAI.py since TFLearn cannot save a model's structure)
 def neuralNet(input_size):
   network = input_data(shape=[None, input_size, 1], name='input')
 
@@ -44,35 +36,31 @@ def neuralNet(input_size):
   network = regression(network, optimizer='adam', learning_rate=learningRate, loss='categorical_crossentropy', name='targets')
 
   # Defining Model
-  model = tflearn.DNN(network) # tensorboard_dir='logs'
+  model = tflearn.DNN(network)
+
+  # Loading model parameters from training
+  model.load('Model/CartPole.tfl')
 
   return model
 
-def trainNet(trainingData, model=False):
-  # Creating numpy array with all observations
-  X = np.array([i[0] for i in trainingData]).reshape(-1, len(trainingData[0][0]), 1)
-  # Creating numpy array with all labels
-  y = np.array([i[1] for i in trainingData])
 
-  # Checking if model was given
-  if not model:
-    model = neuralNet(input_size=len(X[0]))
-  
-  model.fit(
-    {'input': X},
-    {'targets': y},
-    n_epoch=3,
-    snapshot_step=500,
-    show_metric=True,
-    run_id='OpenAiBoi'
-  )
+scores = []
+predictions = []
 
-  return model
+model = neuralNet(input_size=len(X[0]))
 
-# Training model
-finalModel = trainNet(data)
+# Playing a few rounds
+for game in range(10):
+  score = 0
+  gameMemory = []
+  prevObs = []
 
-# Saving model
-  # Using TFLearn only weights and biases can be saved, not the model's structure
-  # To save model's structure use vanilla Tensorflow or Keras
-finalModel.save('Model/CartPole.tfl')
+  env.reset()
+
+  for _ in goalSteps:
+    env.render()
+    if len(prevObs) == 0:
+      action = env.action_space.sample()
+    else:
+      action = np.argmax(model.predict(prevObs.reshape(-1, len(prevObs),1))[0])
+
