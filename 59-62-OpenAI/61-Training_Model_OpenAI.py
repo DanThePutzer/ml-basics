@@ -48,13 +48,13 @@ def neuralNet(input_size):
 
   return model
 
-print(data[0])
+print(data[0][0])
 
 def trainNet(trainingData, model=False):
   # Creating numpy array with all observations
-  X = np.array([i[0] for i in trainingData]).reshape(-1, trainingData[0][0], 1)
+  X = np.array([i[0] for i in trainingData]).reshape(-1, len(trainingData[0][0]), 1)
   # Creating numpy array with all labels
-  y = np.array([i[1] for i in trainingData]).reshape(-1, trainingData[0][1], 1)
+  y = np.array([i[1] for i in trainingData])
 
   # Checking if model was given
   if not model:
@@ -62,7 +62,7 @@ def trainNet(trainingData, model=False):
   
   model.fit(
     {'input': X},
-    {'target': y},
+    {'targets': y},
     n_epoch=3,
     snapshot_step=500,
     show_metric=True,
@@ -73,3 +73,5 @@ def trainNet(trainingData, model=False):
 
 # Training model
 finalModel = trainNet(data)
+
+# Continue Video 61 at 12:00
