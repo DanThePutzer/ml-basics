@@ -13,12 +13,12 @@ env = gym.make('CartPole-v0')
 env.reset()
 
 learningRate = 0.01
+epochCount = 5
 
 # Load training data
   # data[i][0] -> Observations
   # data[i][1] -> Action taken
 data = np.load('Data/trainSaved.npy')
-
 
 # Defining model
 def neuralNet(input_size):
@@ -61,7 +61,7 @@ def trainNet(trainingData, model=False):
   model.fit(
     {'input': X},
     {'targets': y},
-    n_epoch=3,
+    n_epoch=epochCount,
     snapshot_step=500,
     show_metric=True,
     run_id='OpenAiBoi'

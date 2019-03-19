@@ -1,0 +1,6 @@
+/59-62-OpenAI/Model/
+/63-66-Cats_Dogs_CNN/Data/*
+/43-58-Deep_Learning/Data/*
+
+*.gz
+.DS_Store

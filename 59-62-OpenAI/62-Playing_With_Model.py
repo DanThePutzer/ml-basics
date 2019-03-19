@@ -10,6 +10,7 @@ from tflearn.layers.estimator import regression
 env = gym.make('CartPole-v0')
 env.reset()
 learningRate = 0.01
+goalSteps = 500
 
 # - - - Defining model - - - 
   # (Structure copied from 61-Training_Model_OpenAI.py since TFLearn cannot save a model's structure)
@@ -47,7 +48,7 @@ def neuralNet(input_size):
 scores = []
 predictions = []
 
-model = neuralNet(input_size=len(X[0]))
+model = neuralNet(input_size=4)
 
 # Playing a few rounds
 for game in range(10):
@@ -57,10 +58,23 @@ for game in range(10):
 
   env.reset()
 
-  for _ in goalSteps:
+  for _ in range(goalSteps):
     env.render()
     if len(prevObs) == 0:
       action = env.action_space.sample()
     else:
       action = np.argmax(model.predict(prevObs.reshape(-1, len(prevObs),1))[0])
+
+    newObs, reward, done, info = env.step(action)
+    prevObs = newObs
+    score += reward
+
+    gameMemory.append([newObs, action])
+
+    if done:
+      break
+  
+  scores.append(score)
+
+print(f'Average Score: {sum(scores)/len(scores)}')
 
