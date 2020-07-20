@@ -9,7 +9,7 @@ Based on an extensive YouTube tutorial series by the one and only [Sentdex](http
 ![Machine Learning](https://user-images.githubusercontent.com/25454503/87912115-0e657e80-ca6d-11ea-9c09-14881632cc53.png)
 
 ### Contents
-- **Linear_Regression** (2 - 12) - Linear Regression implemented with SciKit-Learn and from scratch to better understand its inner workings, Videos 2 to 12 from playlist above.
+- **Linear Regression** (2 - 12) - Linear Regression implemented with SciKit-Learn and from scratch to better understand its inner workings, Videos 2 to 12 from playlist above.
 
 - **K Nearest Neighbors** (13 - 19) - K Nearest Neighbors intuition and implementation from scratch and with SciKit-Learn, Videos 13 to 19 from playlist above.
 
@@ -23,6 +23,7 @@ Based on an extensive YouTube tutorial series by the one and only [Sentdex](http
 
 - **OpenAI** (59 - 62) - Implementing a neural net and teaching it to play the CartPole Game from OpenAI Gym, Videos 59 to 62 from playlist above.
 
+While the tutorial series is pretty old and not up-to-date on the latest technology anymore, it thought me many concepts and principles that are still valid and introduced me to a topic that is now a big part of my life.
 
 &nbsp;
 
