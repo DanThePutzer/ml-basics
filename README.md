@@ -9,6 +9,9 @@ Based on an extensive YouTube tutorial series by the one and only [Sentdex](http
 ![Machine Learning](https://user-images.githubusercontent.com/25454503/87912115-0e657e80-ca6d-11ea-9c09-14881632cc53.png)
 
 ### Contents
+
+Notebooks and code snippets related to videos of the same topic have been grouped into special directories. Below you can find a short index of what can be found in each folder. 
+
 - **Linear Regression** (2 - 12) - Linear Regression implemented with SciKit-Learn and from scratch to better understand its inner workings, Videos 2 to 12 from playlist above.
 
 - **K Nearest Neighbors** (13 - 19) - K Nearest Neighbors intuition and implementation from scratch and with SciKit-Learn, Videos 13 to 19 from playlist above.
